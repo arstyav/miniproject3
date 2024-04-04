@@ -1,0 +1,131 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    padding-top:100px;
+    background-color:rgb(255, 191, 191) ;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.thumbnail {
+    background-color: #C88EA7;
+}
+
+.caption p {
+    color: #ffffff;
+}
+
+.caption h3 {
+    color: #ffffff;
+}
+
+#content{
+    min-height: 600px;
+    background-color: rgb(255, 191, 191);
+    box-shadow: #000000;
+    
+}
+
+#banner_image {
+    padding-bottom: 50px;
+    text-align: center;
+    color: #ffffff;
+    background: url(../img/intro-bg_1.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.container-fluid .container {
+    padding-left: 12%;
+}
+
+
+#login-panel {
+    padding-top: 3%;
+    padding-left: 15%;
+}
+
+#banner_content {
+    position: relative;
+    padding-top: 6%;
+    padding-bottom: 6%;
+    margin-top: 12%;
+    margin-bottom: 12%;
+    background-color: rgba(160, 4, 4, 0.623);
+    max-width: 660px;
+}
+
+.jumbotron{
+    background-color: #bc91a8;
+}
+
+#item_list {
+    padding-top: 50px;
+    background-color: #ffabb8;
+}
+
+/*This code ensures that when we navigate to a particular section of a page, the section does not get lost behind the header*/
+#cameras:before, #watches:before, #shirts:before{
+    display: block; 
+    content: " "; 
+    margin-top: -85px; 
+    height: 85px; 
+    visibility: hidden;
+}
+
+
+#login-panel .panel-footer{
+    font-weight:normal;
+}
+
+footer {
+    padding: 10px 0;
+    background-color: #101010;
+    color:#9d9d9d;
+    bottom: 0;
+    width: 100%;
+}
+
+.red{
+    color:red;
+}
+
+#settings-container{
+    padding-left: 8%;
+    margin-bottom:10px;
+}
+
+.navbar-brand{
+    font-size:20px;
+}
+
+#products-jumbotron {
+    background-color: #ffabb8;
+    color: #75294c;
+    text-align: center;
+}
+
+@media(max-width:768px) {
+    #banner_content {
+        padding-bottom: 15%;
+    }
+    footer{
+        text-align:left;
+    }
+}
+
+.remove_item_link{
+    color:#0000ff;
+}
