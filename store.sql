@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2020 at 05:52 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Waktu pembuatan: 16 Apr 2024 pada 15.51
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,43 +18,44 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `store`
+-- Database: `tyty`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Struktur dari tabel `items`
 --
 
 CREATE TABLE `items` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `price` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `items`
+-- Dumping data untuk tabel `items`
 --
 
-INSERT INTO `items` (`id`, `name`, `price`) VALUES
-(1, 'Canon EOS', 36000),
-(2, 'Nikon DSLR', 40000),
-(3, 'Sony DSLR', 45000),
-(4, 'Olympus DSLR', 50000),
-(5, 'Titan Model #301', 13000),
-(6, 'Titan Model #201', 3000),
-(7, 'HMT Milan', 8000),
-(8, 'Faber Luba #111', 18000),
-(9, 'H&W', 800),
-(10, 'Luis Phil', 1000),
-(11, 'John Zok', 1500),
-(12, 'Jhalsani', 1300);
+INSERT INTO `items` (`id`, `name`, `price`, `image`) VALUES
+(1, 'Tulip/pcs', 33000, 'tulip.jpeg'),
+(2, 'Rose/pcs', 12000, 'rose.jpeg'),
+(3, 'Lily/pcs', 15000, 'lily.jpeg'),
+(4, 'Aster/pcs', 10000, 'aster.jpeg'),
+(5, 'Cascade Bouquet', 162000, 'cascade.jpeg'),
+(6, 'Round Bouquet', 190000, 'round.jpeg'),
+(7, 'Hand-Tied Bouquet', 250000, 'handtied.jpeg'),
+(8, 'Pageant Bouquet', 285000, 'pageant.jpeg'),
+(9, 'Snickers/pcs', 14000, 'snickers.jpeg'),
+(10, 'Mini Doll/pcs', 35000, 'doll.jpeg'),
+(11, 'Candy/pcs', 25000, 'candy.jpeg'),
+(12, 'Chocolate Ferrero Rocher/box', 110000, 'coklat.jpeg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -65,90 +65,98 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `contact` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `address` varchar(255) NOT NULL,
+  `is_admin` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `contact`, `city`, `address`) VALUES
-(1, 'Vishwa', 'vish@gmail.com', '708175b3fdb269c4ebe8e7751bb3fccd', '9283746352', 'Bengaluru', 'JP Nagar 2nd Phase'),
-(2, 'Vishal', 'vishal@gmail.com', '72eea11febe23ae3dcab2bf59794c54c', '9120394750', 'Chennai', 'T Nagar'),
-(3, 'Ram', 'ram@gmail.com', '1b7b4c38f626766bbdcfc895e2c514f6', '9718273679', 'Delhi', 'PMO'),
-(4, 'Raj', 'raj@gmail.com', '1537c1dea8479ff52bc68336e323385f', '9281736475', 'Bengaluru', 'Basavangudi'),
-(5, 'Ravi', 'ravi@gmail.com', 'f4690de2554616f5b853d35f5a7970d4', '9182712098', 'Chennai', 'abc'),
-(6, 'Vishwadutt', 'vishwadutt99@gmail.com', '8231ac09972b51e692a5f515f8349a29', '9741301718', 'Bengaluru', 'Jayanagar 3rd Block');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `contact`, `city`, `address`, `is_admin`) VALUES
+(7, 'aristy', 'aristy@gmail.com', '615900ded55a23bb9cfdcb00708602a1', '8314224940', 'Samarinda', 'Loa Janan', 2),
+(10, 'novan', 'novan@gmail.com', '1f73402c644002a7ea3c9532e8ba4139', '0816392625', 'Balikpapan', 'jalannnnnnn', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_item`
+-- Struktur dari tabel `user_item`
 --
 
 CREATE TABLE `user_item` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `status` enum('Added to cart','Confirmed','','') NOT NULL,
   `date_time` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `user_item`
+-- Dumping data untuk tabel `user_item`
 --
 
-INSERT INTO `user_item` (`id`, `user_id`, `item_id`, `status`, `date_time`) VALUES
-(1, 1, 2, 'Confirmed', '2020-06-07 21:08:35'),
-(2, 1, 10, 'Confirmed', '2020-06-07 21:08:38'),
-(3, 3, 7, 'Confirmed', '2020-06-07 21:09:06'),
-(4, 3, 12, 'Confirmed', '2020-06-07 21:09:10'),
-(5, 5, 5, 'Confirmed', '2020-06-07 21:22:01'),
-(6, 5, 1, 'Confirmed', '2020-06-07 21:22:03');
+INSERT INTO `user_item` (`id`, `user_id`, `item_id`, `quantity`, `status`, `date_time`) VALUES
+(7, 7, 3, 0, 'Confirmed', '2024-04-04 16:33:15'),
+(11, 7, 1, 0, 'Confirmed', '2024-04-04 20:30:37'),
+(12, 7, 6, 0, 'Confirmed', '2024-04-04 20:32:02'),
+(13, 7, 2, 0, 'Confirmed', '2024-04-04 20:51:57'),
+(15, 7, 7, 0, 'Confirmed', '2024-04-04 21:00:12'),
+(16, 7, 8, 0, 'Confirmed', '2024-04-04 21:00:14'),
+(17, 7, 5, 0, 'Confirmed', '2024-04-04 21:00:18'),
+(18, 7, 1, 0, 'Confirmed', '2024-04-05 10:23:59'),
+(19, 7, 2, 0, 'Confirmed', '2024-04-05 10:24:01'),
+(20, 7, 7, 0, 'Confirmed', '2024-04-05 10:24:05'),
+(21, 7, 1, 0, 'Confirmed', '2024-04-05 14:16:59'),
+(22, 7, 2, 0, 'Confirmed', '2024-04-05 14:17:01'),
+(30, 7, 2, 4, 'Confirmed', '2024-04-16 21:02:30'),
+(31, 7, 3, 1, 'Confirmed', '2024-04-16 21:12:18'),
+(32, 7, 1, 3, 'Confirmed', '2024-04-16 21:14:22'),
+(33, 7, 3, 1, 'Confirmed', '2024-04-16 21:50:03');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `items`
+-- Indeks untuk tabel `items`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_item`
+-- Indeks untuk tabel `user_item`
 --
 ALTER TABLE `user_item`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `items`
+-- AUTO_INCREMENT untuk tabel `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `user_item`
+-- AUTO_INCREMENT untuk tabel `user_item`
 --
 ALTER TABLE `user_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

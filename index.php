@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //establish the connection to database, and start the session
 require("includes/common.php");
@@ -57,7 +58,7 @@ if (isset($_SESSION['email'])) {
                     <div class="col-sm-4">
                         <a href="products.php#fresh" >
                             <div class="thumbnail">
-                                <img src="img/fresh.jpg" alt="">
+                                <img src="img/uploads/fresh.jpg" alt="">
                                 <div class="caption">
                                     <h3>Fresh Flowers</h3>
                                     <p>Fresh blooms for every occasion at our flowershop.</p>
@@ -69,7 +70,7 @@ if (isset($_SESSION['email'])) {
                     <div class="col-sm-4">
                         <a href="products.php#bouquet" >
                             <div class="thumbnail">
-                                <img src="img/bouquet.jpg" alt="">
+                                <img src="img/uploads/bouquet.jpg" alt="">
                                 <div class="caption">
                                     <h3>Bouquet</h3>
                                     <p>Elegant bouquets for every moment, crafted with care at our shop..</p>
@@ -81,7 +82,7 @@ if (isset($_SESSION['email'])) {
                     <div class="col-sm-4">
                         <a href="products.php#accessories" >
                             <div class="thumbnail">
-                                <img src="img/acc.jpg" alt="">
+                                <img src="img/uploads/acc.jpg" alt="">
                                 <div class="caption">
                                     <h3>Accessories</h3>
                                     <p>Charming accessories to complement your gift, available at our shop.</p>
